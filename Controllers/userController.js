@@ -14,7 +14,7 @@ class userController {
             res.send({"status": "failed", "message": "Email already exists"})
         }
         else{
-            if(name && username && email && password){
+            if(name && userName && email && password){
 
                 try {
                     const salt = await bcrypt.genSalt(10)
@@ -22,9 +22,9 @@ class userController {
 
                     const doc = new From({
                         name:name,
-                        username:username,
+                        userName:userName,
                         email:email,
-                        password:password,
+                        password:hashPassword,
                     })
                     await doc .save()
                     
